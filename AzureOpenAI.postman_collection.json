@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "7dde6dbe-25eb-4302-a3b9-fd99349d3ce0",
+		"name": "AzureOpenAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28373462"
+	},
+	"item": [
+		{
+			"name": "Get models",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{Azure-API-Key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{Azure-Endpoint}}openai.azure.com/openai/models?api-version=2022-12-01",
+					"protocol": "https",
+					"host": [
+						"{{Azure-Endpoint}}openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"models"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2022-12-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get deployments",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{Azure-API-Key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{Azure-Endpoint}}openai.azure.com/openai/deployments?api-version=2022-12-01",
+					"protocol": "https",
+					"host": [
+						"{{Azure-Endpoint}}openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"deployments"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2022-12-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create completions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{Azure-API-Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"prompt\": \"What is OpenAI?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{Azure-Endpoint}}openai.azure.com/openai/deployments/test-code/completions?api-version=2022-12-01",
+					"protocol": "https",
+					"host": [
+						"{{Azure-Endpoint}}openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"deployments",
+						"test-code",
+						"completions"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2022-12-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Image Generation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{Azure-API-Key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"prompt\": \"Tom and Jerry climbing up a hill\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{Azure-Endpoint}}openai.azure.com/openai/images/generations:submit?api-version=2023-06-01-preview",
+					"protocol": "https",
+					"host": [
+						"{{Azure-Endpoint}}openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"images",
+						"generations:submit"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-06-01-preview"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Generated Image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{Azure-API-Key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{Azure-Endpoint}}openai.azure.com/openai/operations/images/ce183d44-a731-4a94-b5b1-35a035c517df?api-version=2023-06-01-preview",
+					"protocol": "https",
+					"host": [
+						"{{Azure-Endpoint}}openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"operations",
+						"images",
+						"ce183d44-a731-4a94-b5b1-35a035c517df"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-06-01-preview"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Azure-API-Key",
+			"value": "0e95eac1074d4d43bdaa9982f48921a0"
+		},
+		{
+			"key": "Azure-Endpoint",
+			"value": "gavsgpt-openai"
+		}
+	]
+}
